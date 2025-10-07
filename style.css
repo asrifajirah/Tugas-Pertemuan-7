@@ -1,0 +1,127 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #E6F3FF;
+    margin: 0;
+    padding: 0;
+}
+
+.layout {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+.header {
+    background-color: #ff3700;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.header p {
+    margin-top: 5px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 20%;
+    background-color: #D9F0FF;
+    padding: 20px;
+}
+
+.sidebar h3 {
+    text-align: center;
+    color: #ff3700;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 10px 0;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #ff3700;
+    font-weight: bold;
+    display: block;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background-color: #ff3700;
+    color: white;
+}
+
+/* Konten utama */
+.content {
+    padding: 20px;
+    vertical-align: top;
+}
+
+.content h2 {
+    color: #0f0f0f;
+}
+
+/* Gambar galeri */
+.gallery-table {
+    width: 100%;
+}
+
+.gallery-img {
+    width: 250px;
+    height: 170px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.gallery-img:hover {
+    transform: scale(1.05);
+}
+
+/* Form dan tombol */
+input, textarea, button {
+    width: 100%;
+    padding: 6px;
+    margin: 4px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #ff3700;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+}
+
+button:hover {
+    background-color: #ff3700;
+}
+
+/* Footer */
+.footer {
+    background-color: #ff3700;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.footer a {
+    color: #FFF;
+    text-decoration: underline;
+}

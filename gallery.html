@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Galeri Pantai Anyer</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 80px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+        }
+        .popup-content {
+            background-color: #fff;
+            margin: auto;
+            padding: 30px;
+            border-radius: 12px;
+            width: 60%;
+            box-shadow: 0 0 12px rgba(0,0,0,0.5);
+            text-align: left;
+        }
+        .popup img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .close-btn {
+            background-color: #0099FF;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .close-btn:hover { background-color: #007ACC; }
+    </style>
+</head>
+<body>
+
+<table class="layout" cellspacing="0" cellpadding="0">
+    <tr>
+        <td colspan="2" class="header">
+            <h1>PANTAI ANYER</h1>
+            <p>Eksplorasi Keindahan dan Pesona Laut Banten</p>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="sidebar" valign="top">
+            <h3>Menu</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </td>
+
+        <td class="content" valign="top">
+            <h2>Galeri Pantai Anyer</h2>
+            <p>Klik gambar untuk melihat informasi menarik tentang Pantai Anyer.</p>
+
+            <table class="gallery-table" cellpadding="10" cellspacing="10">
+                <tr align="center">
+                    <td>
+                        <img src="sunset.jpg" class="gallery-img" alt="Pantai Anyer" onclick="showPopup('sunset')">
+                        <h3>Sunset di Anyer</h3>
+                    </td>
+                    <td>
+                        <img src="mercusuar.jpg" class="gallery-img" alt="Mercusuar Anyer" onclick="showPopup('mercusuar')">
+                        <h3>Mercusuar Cikoneng</h3>
+                    </td>
+                    <td>
+                        <img src="banana.jpg" class="gallery-img" alt="Pantai Anyer Aktivitas" onclick="showPopup('aktivitas')">
+                        <h3>Aktivitas Wisata</h3>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" class="footer">
+            Aufa Zahir F.A (231011400780) | 2025 Wisata Pantai Anyer | <a href="contact.html">Hubungi Kami</a>
+        </td>
+    </tr>
+</table>
+
+<!-- POPUP DETAIL -->
+<div id="popup" class="popup">
+    <div class="popup-content" id="popup-content">
+        <img id="popup-img" src="" alt="Gambar Wisata">
+        <h2 id="popup-title"></h2>
+        <p id="popup-text"></p>
+        <ul id="popup-facts"></ul>
+        <button class="close-btn" onclick="closePopup()">Tutup</button>
+    </div>
+</div>
+
+<script>
+function showPopup(place) {
+    const popup = document.getElementById("popup");
+    const img = document.getElementById("popup-img");
+    const title = document.getElementById("popup-title");
+    const text = document.getElementById("popup-text");
+    const facts = document.getElementById("popup-facts");
+
+    let info = { img: "", title: "", desc: "", facts: [] };
+
+    if (place === "sunset") {
+        info.img = "sunset.jpg";
+        info.title = "Sunset di Pantai Anyer";
+        info.desc = "Pantai Anyer dikenal dengan pemandangan matahari terbenam yang mempesona. Langit jingga dan siluet perahu nelayan menciptakan suasana romantis yang sulit dilupakan.";
+        info.facts = [
+            "Waktu terbaik menikmati sunset: pukul 17.30–18.00.",
+            "Banyak spot foto Instagramable di sepanjang pantai.",
+            "Suasana tenang dengan deburan ombak lembut."
+        ];
+    } else if (place === "mercusuar") {
+        info.img = "mercusuar.jpg";
+        info.title = "Mercusuar Cikoneng – Ikon Pantai Anyer";
+        info.desc = "Mercusuar Cikoneng dibangun pada masa kolonial Belanda dan menjadi simbol sejarah Pantai Anyer. Dari puncaknya, pengunjung dapat menikmati panorama laut yang menakjubkan.";
+        info.facts = [
+            "Dibangun tahun 1885 sebagai penanda jalur pelayaran.",
+            "Masih berfungsi hingga kini sebagai mercusuar aktif.",
+            "Tempat favorit wisatawan untuk berfoto."
+        ];
+    } else if (place === "aktivitas") {
+        info.img = "banana.jpg";
+        info.title = "Aktivitas Seru di Pantai Anyer";
+        info.desc = "Pantai Anyer menawarkan berbagai kegiatan wisata menarik seperti banana boat, snorkeling, dan naik jet ski. Cocok untuk wisata keluarga maupun kelompok.";
+        info.facts = [
+            "Tersedia penyewaan perlengkapan watersport.",
+            "Banyak warung makan khas pesisir di sekitar pantai.",
+            "Suasana aman dan nyaman untuk anak-anak."
+        ];
+    }
+
+    img.src = info.img;
+    title.textContent = info.title;
+    text.textContent = info.desc;
+    facts.innerHTML = "";
+    info.facts.forEach(f => {
+        const li = document.createElement("li");
+        li.textContent = f;
+        facts.appendChild(li);
+    });
+
+    popup.style.display = "block";
+}
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+</script>
+
+</body>
+</html>
